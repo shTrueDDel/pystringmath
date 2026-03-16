@@ -1,0 +1,271 @@
+# String Arithmetic Library
+
+*This documentation was translated and compiled with the help of AI. Examples may contain minor errors that do not affect the understanding of how it works.*
+
+## Overview
+The library provides tools for performing arithmetic operations on strings by converting characters to their numeric codes (ASCII/Unicode) and back. It allows adding, subtracting, multiplying, and dividing strings with both numbers and other strings.
+
+---
+
+## Class `to`
+A helper class for converting strings to code arrays and back.
+
+### Methods
+
+#### `to.array(data)`
+Converts a string to an array of character numeric codes.
+
+**Parameters:**
+- `data` (str) - input string
+
+**Returns:**
+- list[int] - array of character codes
+
+**Exceptions:**
+- `TypeError` - if input data is not a string
+
+**Example:**
+```python
+>>> to.array('Hello')
+[72, 101, 108, 108, 111]
+```
+
+---
+
+#### `to.chars(data)`
+Converts an array of numeric codes back to a string.
+
+**Parameters:**
+- `data` (list[int]) - array of character codes
+
+**Returns:**
+- str - resulting string
+
+**Exceptions:**
+- `TypeError` - if input data is invalid
+
+**Example:**
+```python
+>>> to.chars([72, 101, 108, 108, 111])
+'Hello'
+```
+
+---
+
+## Class `nmath`
+Performs arithmetic operations on a string using a single number.
+
+### General Features
+- All methods accept a string and a number
+- Operations are applied to each character in the string
+- Result is returned as a string
+
+---
+
+#### `nmath.sum(data, plus)`
+Adds a number to each character in the string.
+
+**Parameters:**
+- `data` (str) - source string
+- `plus` (int) - number to add
+
+**Returns:**
+- str - new string
+
+**Example:**
+```python
+>>> nmath.sum('ABC', 1)
+'BCD'  # A(65)+1=66('B'), B(66)+1=67('C'), C(67)+1=68('D')
+```
+
+---
+
+#### `nmath.min(data, minus)`
+Subtracts a number from each character in the string.
+
+**Parameters:**
+- `data` (str) - source string
+- `minus` (int) - number to subtract
+
+**Returns:**
+- str - new string
+
+**Example:**
+```python
+>>> nmath.min('DEF', 1)
+'CDE'  # D(68)-1=67('C'), E(69)-1=68('D'), F(70)-1=69('E')
+```
+
+---
+
+#### `nmath.mul(data, multiplier)`
+Multiplies each character's code by a number.
+
+**Parameters:**
+- `data` (str) - source string
+- `multiplier` (int) - multiplier
+
+**Returns:**
+- str - new string
+
+**Example:**
+```python
+>>> nmath.mul('AB', 2)
+'ÆÊ'  # A(65)*2=130('Æ'), B(66)*2=132('Ê')
+```
+
+---
+
+#### `nmath.div(data, divisor)`
+Performs integer division of each character's code by a number.
+
+**Parameters:**
+- `data` (str) - source string
+- `divisor` (int) - divisor
+
+**Returns:**
+- str - new string
+
+**Exceptions:**
+- `ZeroDivisionError` - when attempting division by zero
+
+**Example:**
+```python
+>>> nmath.div('d', 2)
+'2'  # d(100)//2 = 50('2')
+```
+
+---
+
+## Class `armath`
+Performs element-wise arithmetic operations between two strings with cyclic repetition.
+
+### General Features
+- Accepts two strings
+- Operations are performed on corresponding character codes
+- If the second string is shorter, it's cyclically repeated (via `itertools.cycle`)
+- Result is returned as a string
+
+---
+
+#### `armath.sum(data, plus)`
+Element-wise addition of character codes from two strings.
+
+**Parameters:**
+- `data` (str) - first string
+- `plus` (str) - second string (addend)
+
+**Returns:**
+- str - resulting string
+
+**Example:**
+```python
+>>> armath.sum('ABC', '12')
+'rtt'  # A(65)+'1'(49)=114('r')
+       # B(66)+'2'(50)=116('t')
+       # C(67)+'1'(49)=116('t') - cyclic repetition of '12'
+```
+
+---
+
+#### `armath.min(data, subtrahend)`
+Element-wise subtraction of second string character codes from the first.
+
+**Parameters:**
+- `data` (str) - first string
+- `subtrahend` (str) - second string (subtrahend)
+
+**Returns:**
+- str - resulting string
+
+**Example:**
+```python
+>>> armath.min('ABC', '12')
+'\x10\x11\x12'  # A(65)-'1'(49)=16 (DLE character, non-printable)
+                # Results may be in non-printable range
+```
+
+---
+
+#### `armath.mul(data, multiplier)`
+Element-wise multiplication of character codes from two strings.
+
+**Parameters:**
+- `data` (str) - first string
+- `multiplier` (str) - second string (multipliers)
+
+**Returns:**
+- str - resulting string
+
+**Example:**
+```python
+>>> armath.mul('AB', '12')
+'1¡'  # A(65)*'1'(49)=3185 - may exceed ASCII range
+```
+
+---
+
+#### `armath.div(data, divisor)`
+Element-wise integer division of first string character codes by second string codes.
+
+**Parameters:**
+- `data` (str) - first string (dividend)
+- `divisor` (str) - second string (divisor)
+
+**Returns:**
+- str - resulting string
+
+**Exceptions:**
+- `ZeroDivisionError` - if the second string contains a character with code 0
+
+**Example:**
+```python
+>>> armath.div('abcd', '12')
+'\x00\x00\x00\x00'  # Results may be non-printable
+```
+
+---
+
+## Usage Examples
+
+### Basic Operations
+```python
+# Simple numeric operations
+text = "Hello"
+encoded = nmath.sum(text, 5)  # "Mjqqt" (shift by 5)
+decoded = nmath.min(encoded, 5)  # "Hello"
+
+# String operations
+result = armath.sum("Hello", "123")  # Element-wise addition with cyclic repetition of "123"
+```
+
+### Encryption/Decryption
+```python
+# Simple shift cipher
+def encrypt(text, key):
+    return nmath.sum(text, key)
+
+def decrypt(text, key):
+    return nmath.min(text, key)
+
+message = "Secret message"
+encrypted = encrypt(message, 10)
+decrypted = decrypt(encrypted, 10)
+print(decrypted)  # "Secret message"
+```
+
+### Variant Generation
+```python
+base = "Test"
+variants = [nmath.mul(base, i) for i in range(1, 6)]
+for i, variant in enumerate(variants, 1):
+    print(f"Variant {i}: {variant}")
+```
+
+---
+
+## Notes and Limitations
+
+1. **Encoding**: Works with Unicode characters, but results may be non-printable
+2. **Integer Division**: Uses `//`, so fractional results are truncated
+3. **Value Range**: Operation results may fall outside the printable character range
