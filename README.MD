@@ -15,7 +15,14 @@ Write in cli:
 pip install pystringmath
 ```
 
+And in Python script:
 
+```python
+from pystringmath import *
+
+for i in range(1000):
+    print(nmath.sum('Gabe Newell\'s mom very thin', i)) # Caesar cipher with shift i. Just look at output!
+```
 
 ## Class `to`
 A helper class for converting strings to code arrays and back.
