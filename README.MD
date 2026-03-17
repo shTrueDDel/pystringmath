@@ -265,6 +265,35 @@ Element-wise integer division of first string character codes by second string c
 
 ---
 
+## Class `crypto`
+Basic encrypt and decrypt functions for prototyping and testing
+
+### General Features
+- Basic encrypt and decrypt functions
+
+---
+
+#### `.xor(data, key)`
+XOR enctypting and decrypting
+
+**Parameters:**
+- `data` (str or list) - first string
+- `key` (str or list) - second string (addend)
+
+**Returns:**
+- str - resulting string
+
+**Example:**
+```python
+>>> crypto.xor('Test text', 'key')
+  ?
+E
+>>> crypto.xor(crypto.xor('Test text', 'key'), 'key')
+Test text
+```
+
+---
+
 ## Usage Examples
 
 ### Basic Operations

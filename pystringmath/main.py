@@ -86,8 +86,15 @@ class armath:
             raise ZeroDivisionError('Error! Division by zero!')
         r = [a // b for a, b in zip(data, cycle(div))]
         return to.chars(r)
+    
+class crypto:
+    def xor (data, key):
+        data = to.non_safe_array(data)
+        key = to.non_safe_array(key)
+        r = [a ^ b for a, b in zip(data, cycle(key))]
+        return to.chars(r)
 
-""" # Tests
+# """ # Tests
 print('to.array: ', to.array('Test')) 
 print('to.chars: ', to.chars(to.array('Test')))
 print('non_safe_array: ', to.chars(to.non_safe_array([65, 66, 67])), '\n')
@@ -97,8 +104,11 @@ print('nmath.min: ', nmath.min('Test', 5), '\tTest')
 print('nmath.mul: ', nmath.mul('Test', 5), '\tTest')
 print('nmath.div: ', nmath.div('Test', 5), '\tTest')
 
-print('armath.sum: ', armath.sum('Test', 'Check'), '\tTest\tCheck')
-print('armath.min: ', armath.min('Test', 'Check'), '\tTest\tCheck')
-print('armath.mul: ', armath.mul('Test', 'Check'), '\tTest\tCheck')
-print('armath.div: ', armath.div('Test', 'Check'), '\tTest\tCheck')
-""" # Tests
+print('armath.sum: ', armath.sum('Test', 'A'), '\tTest\tA')
+print('armath.min: ', armath.min('Test', 'A'), '\tTest\tA')
+print('armath.mul: ', armath.mul('Test', 'A'), '\tTest\tA')
+print('armath.div: ', armath.div('Test', 'A'), '\tTest\tA\n')
+
+print('crypto.xor: ', crypto.xor('Test text', 'key'))
+print('crypto.xor x2: ', crypto.xor(crypto.xor('Test text', 'key'), 'key'))
+# """ # Tests
