@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: pystringmath
-Version: 1.2.0
+Version: 1.3.0
 Summary: Package for string maths
 Home-page: https://github.com/shTrueDDel/pystringmath/
 Author: shTrueDDel
@@ -27,9 +27,12 @@ Dynamic: summary
 
 # String Arithmetic Library
 
+[GitHub](https://github.com/shTrueDDel/pystringmath)
+
 *This documentation was translated and compiled with the help of AI. Examples may contain minor errors that do not affect the understanding of how it works.*
 
 ## Overview
+
 The library provides tools for performing arithmetic operations on strings by converting characters to their numeric codes (ASCII/Unicode) and back. It allows adding, subtracting, multiplying, and dividing strings with both numbers and other strings.
 
 ---
@@ -288,6 +291,35 @@ Element-wise integer division of first string character codes by second string c
 ```python
 >>> armath.div('abcd', '12')
 '\x00\x00\x00\x00'  # Results may be non-printable
+```
+
+---
+
+## Class `crypto`
+Basic encrypt and decrypt functions for prototyping and testing
+
+### General Features
+- Basic encrypt and decrypt functions
+
+---
+
+#### `.xor(data, key)`
+XOR enctypting and decrypting
+
+**Parameters:**
+- `data` (str or list) - first string
+- `key` (str or list) - second string (addend)
+
+**Returns:**
+- str - resulting string
+
+**Example:**
+```python
+>>> crypto.xor('Test text', 'key')
+  ?
+E
+>>> crypto.xor(crypto.xor('Test text', 'key'), 'key')
+Test text
 ```
 
 ---

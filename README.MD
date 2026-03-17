@@ -1,8 +1,11 @@
 # String Arithmetic Library
 
+[GitHub](https://github.com/shTrueDDel/pystringmath)
+
 *This documentation was translated and compiled with the help of AI. Examples may contain minor errors that do not affect the understanding of how it works.*
 
 ## Overview
+
 The library provides tools for performing arithmetic operations on strings by converting characters to their numeric codes (ASCII/Unicode) and back. It allows adding, subtracting, multiplying, and dividing strings with both numbers and other strings.
 
 ---

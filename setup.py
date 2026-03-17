@@ -6,7 +6,7 @@ def readme():
 
 setup(
   name='pystringmath',
-  version='1.2.0',
+  version='1.3.1',
   author='shTrueDDel',
   author_email='xeosscript@gmail.com',
   description='Package for string maths',
