@@ -21,8 +21,30 @@ And in Python script:
 from pystringmath import *
 
 for i in range(1000):
-    print(nmath.sum('Gabe Newell\'s mom very thin', i)) # Caesar cipher with shift i. Just look at output!
+    print(nmath.sum('Gabe Newell\'s mom very thin', i)) # Caesar cipher with shift i. Just look at output!`
 ```
+
+#### `to.non_safe_array(data)` *(Recomendated for use)*
+Converts a string to an array of character numeric codes. You can pass an array, and the method will return the same array.
+
+**Parameters:**
+- `data` (str, list) - input string
+
+**Returns:**
+- list[int] - array of character codes
+
+**Exceptions:**
+- `TypeError` - only if input data is not integer list
+
+**Example:**
+```python
+>>> to.non_safe_array('Hello')
+[72, 101, 108, 108, 111]
+>>> to.non_safe_array([72, 101, 108, 108, 111])
+[72, 101, 108, 108, 111]
+```
+
+---
 
 ## Class `to`
 A helper class for converting strings to code arrays and back.
