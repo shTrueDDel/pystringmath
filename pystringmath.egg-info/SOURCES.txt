@@ -1,0 +1,7 @@
+LICENSE
+setup.cfg
+setup.py
+pystringmath.egg-info/PKG-INFO
+pystringmath.egg-info/SOURCES.txt
+pystringmath.egg-info/dependency_links.txt
+pystringmath.egg-info/top_level.txt

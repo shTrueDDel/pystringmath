@@ -1,3 +1,30 @@
+Metadata-Version: 2.4
+Name: pystringmath
+Version: 1.0.1
+Summary: Package for string maths
+Home-page: https://github.com/shTrueDDel/pystringmath/
+Author: shTrueDDel
+Author-email: xeosscript@gmail.com
+Project-URL: Documentation, https://github.com/shTrueDDel/pystringmath/blob/main/README.MD
+Keywords: math string mathstring crypto cryptography encoding decoding
+Classifier: Programming Language :: Python :: 3.13
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license-file
+Dynamic: project-url
+Dynamic: requires-python
+Dynamic: summary
+
 # String Arithmetic Library
 
 *This documentation was translated and compiled with the help of AI. Examples may contain minor errors that do not affect the understanding of how it works.*
@@ -121,7 +148,7 @@ Multiplies each character's code by a number.
 **Example:**
 ```python
 >>> nmath.mul('AB', 2)
-'ÆÊ'  # A(65)*2=130('Æ'), B(66)*2=132('Ê')
+'Ã†ÃŠ'  # A(65)*2=130('Ã†'), B(66)*2=132('ÃŠ')
 ```
 
 ---
@@ -210,7 +237,7 @@ Element-wise multiplication of character codes from two strings.
 **Example:**
 ```python
 >>> armath.mul('AB', '12')
-'1¡'  # A(65)*'1'(49)=3185 - may exceed ASCII range
+'1Â¡'  # A(65)*'1'(49)=3185 - may exceed ASCII range
 ```
 
 ---
